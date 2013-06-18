@@ -32,7 +32,7 @@ SEMA_VER=$BASE_SEMA_VER$VER
 #export KBUILD_BUILD_VERSION="2"
 export LOCALVERSION="-"`echo $SEMA_VER`
 #export CROSS_COMPILE=/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-2012.09-20120921_linux/bin/arm-linux-gnueabihf-
-export CROSS_COMPILE=../toolchain/arm-linux-gnueabihf-
+export CROSS_COMPILE=/semaphore/toolchain/bin/arm-gnueabi-
 export ARCH=arm
 
 echo 
@@ -40,7 +40,7 @@ echo "Making ""semaphore"_$VARIANT"_defconfig"
 
 DATE_START=$(date +"%s")
 
-make "semaphore"_$VARIANT"_defconfig"
+make ".config"
 
 eval $(grep CONFIG_INITRAMFS_SOURCE .config)
 INIT_DIR=$CONFIG_INITRAMFS_SOURCE
