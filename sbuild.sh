@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE_SEMA_VER="TestCommit"
+BASE_SEMA_VER="GearKernel_JBPlus_V0.1"
 
 case "$1" in
         galaxys)
