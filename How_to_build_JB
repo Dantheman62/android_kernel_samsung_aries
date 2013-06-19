@@ -8,7 +8,7 @@ You need a modern Linux box (preferably) with git and linaro toolchain installed
 (www.linaro.org).
 
 First you need to setup the directory that within you will clone the kernel and 
-initramfs repository. In this guide we will setup them in ~/semaphore but you 
+initramfs repository. In this guide we will setup them in ~/gearkernel but you 
 can do it in any directory you want.
 
 
@@ -16,32 +16,32 @@ can do it in any directory you want.
 
 In your home directory (~/) create the directories:
 
-mkdir -p semaphore/output/galaxys
-mkdir -p semaphore/output/captivate
-mkdir -p semaphore/output/vibrant
+mkdir -p gearkernel/output/galaxys
+mkdir -p gearkernel/output/captivate
+mkdir -p gearkernel/output/vibrant
 
 The above will be the output directories for galaxy s, captivate and vibrant 
 versions.
 
 Build script also needs a symbolic link to your toolchain bin directory:
 
-cd semaphore
-ln -s gcc-linaro-arm-linux-gnueabihf-2012.09-20120921_linux/bin/ toolchain
+cd gearkernel
+ln -s gcc-linaro-arm-linux-gnueabihf-2012.09-20120921_linux/bin/ toolchain <- example
 
-The directory structure is complete. Now, you are ready to clone Semaphore code.
+The directory structure is complete. Now, you are ready to clone gearkernel code.
 
 
 2. Setting up repositories
 
-While you are still in ~/semaphore directory do the following.
+While you are still in ~/gearkernel directory do the following.
 
 Clone the main kernel repository branch jellybean:
 
-git clone -b jellybean git://github.com/stratosk/samsung-kernel-aries
+git clone -b jellybean git://github.com/Alberto96/samsung-kernel-aries
 
 Clone the initramfs:
 
-git clone git://github.com/stratosk/ics-ramdisk
+git clone git://github.com/Alberto96/ics-ramdisk
 
 Due to the fact that github does not preserve file permissions, I also included
 initramfs for each SGS variant as a tarball. You need to do the following 
@@ -66,7 +66,7 @@ When, you will run the build script, the proper configuration will be used
 according to the selected variant (please see next section).
 If you need any change kernel configuration, you have to edit these files
 before the building procedure. 
-Leave these files unchanged, if you want Semaphore's default settings.
+Leave these files unchanged, if you want gearkernel's default settings.
 
 You are ready to build!
 
@@ -82,7 +82,7 @@ If you run the script without arguments will build the normal version
 for galaxys.
 To build the kernel for galaxys:
 
-cd ~/semaphore/samsung-kernel-aries
+cd ~/gearkernel/samsung-kernel-aries
 ./sbuild galaxys
 
 and for 's' version:
@@ -93,8 +93,8 @@ the compilation will end.
 Watch the output for possible errors. A successful compilation must NOT have any
 error. It may have some warnings, but you can safely ignore them. 
 If everything was OK, you must have the zImage file in 
-~/semaphore/samsung-kernel-aries/arch/arm/boot directory.
+~/gearkernel/samsung-kernel-aries/arch/arm/boot directory.
 Also the script will automatically prepare the CWM flashable zip and the 
-ODIN/Heimdall flashable in ~/semaphore/output directory (in respective variant)
+ODIN/Heimdall flashable in ~/gearkernel/output directory (in respective variant)
 
 Now, you are ready to flash the kernel!
