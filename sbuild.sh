@@ -40,7 +40,7 @@ echo "Making ""semaphore"_$VARIANT"_defconfig"
 
 DATE_START=$(date +"%s")
 
-make ".config"
+make -j3 ".config"
 
 eval $(grep CONFIG_INITRAMFS_SOURCE .config)
 INIT_DIR=$CONFIG_INITRAMFS_SOURCE
@@ -64,13 +64,13 @@ fi
 
 
 
-make -j16 modules
+make -j3 modules
 
 rm `echo $MODULES_DIR"/*"`
 find $KERNEL_DIR -name '*.ko' -exec cp -v {} $MODULES_DIR \;
 chmod 644 `echo $MODULES_DIR"/*"`
 
-make -j16 zImage
+make -j3 zImage
 
 cd arch/arm/boot
 tar cvf `echo $SEMA_VER`.tar zImage
