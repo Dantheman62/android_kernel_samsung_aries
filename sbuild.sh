@@ -1,26 +1,28 @@
 #!/bin/bash
 
-BASE_SEMA_VER="GearKernel_JBPlus_V0.2"
-
 case "$1" in
         galaxys)
             VARIANT="galaxys"
             VER=""
+	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_V0.2"
             ;;
 
         captivate)
             VARIANT="captivate"
             VER="c"
+	    BASE_SEMA_VER="GearKernel_JBPlus_Captivate_V0.2"
             ;;
 
         vibrant)
             VARIANT="vibrant"
             VER="v"
+	    BASE_SEMA_VER="GearKernel_JBPlus_Vibrant_V0.2"
             ;;
 
         *)
             VARIANT="galaxys"
             VER=""
+	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_V0.2"
 esac
 
 if [ "$2" = "s" ] ; then
@@ -40,7 +42,7 @@ echo "Making ""semaphore"_$VARIANT"_defconfig"
 
 DATE_START=$(date +"%s")
 
-make -j3 ".config"
+make -j3 "semaphore"_$VARIANT"_defconfig"
 
 eval $(grep CONFIG_INITRAMFS_SOURCE .config)
 INIT_DIR=$CONFIG_INITRAMFS_SOURCE
