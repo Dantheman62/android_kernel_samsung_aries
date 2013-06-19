@@ -7,6 +7,12 @@ case "$1" in
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_V0.2"
             ;;
 
+        galaxysb)
+            VARIANT="galaxysb"
+            VER="b"
+	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxySB_V0.2"
+            ;;
+
         captivate)
             VARIANT="captivate"
             VER="c"
