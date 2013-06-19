@@ -2,34 +2,44 @@
 
 make clean
 
-echo "buiding Galaxy S normal version"
+echo "Building Galaxy S Stock RAM version"
 
 ./sbuild.sh galaxys 
 
-echo "buiding Galaxy S normal version"
+echo "Building Galaxy S BigMem RAM version"
 
 ./sbuild.sh galaxys s 
 
 make clean
 
-echo "buiding Galaxy S normal version"
+echo "Building Vibrant Stock RAM version"
 
 ./sbuild.sh vibrant
 
-echo "buiding Galaxy S normal version"
+echo "Building Vibrant BigMem RAM version"
 
 ./sbuild.sh vibrant s
 
 make clean 
 
-echo "buiding Galaxy S normal version"
+echo "Building Captivate Stock RAM version"
 
 ./sbuild.sh captivate
 
-echo "buiding Galaxy S normal version"
+echo "Building Captivate BigMem RAM version"
 
 ./sbuild.sh captivate s
 
 make clean
 
-echo "finish"
+echo "Building Galaxy S B Stock RAM version"
+
+./sbuild.sh galaxysb 
+
+echo "Building Galaxy S B BigMem RAM version"
+
+./sbuild.sh galaxysb s 
+
+make clean
+
+echo "Finish"
