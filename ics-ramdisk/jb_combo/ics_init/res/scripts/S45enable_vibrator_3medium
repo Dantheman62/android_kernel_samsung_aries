@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#Vibrator
+#Vibration level
+#Medium
+
+echo 50 > /sys/devices/virtual/misc/pwm_duty
