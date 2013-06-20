@@ -55,7 +55,7 @@ INIT_DIR=$CONFIG_INITRAMFS_SOURCE
 MODULES_DIR=`echo $INIT_DIR`files/modules
 KERNEL_DIR=`pwd`
 OUTPUT_DIR=../output/
-CWM_DIR=../ics-ramdisk/cwm/
+CWM_DIR=./ics-ramdisk/cwm/
 
 echo "LOCALVERSION="$LOCALVERSION
 echo "CROSS_COMPILE="$CROSS_COMPILE
@@ -89,7 +89,7 @@ cd ../../../
 cp arch/arm/boot/zImage $CWM_DIR"boot.img"
 cd $CWM_DIR
 zip -r `echo $SEMA_VER`.zip *
-mv  `echo $SEMA_VER`.zip ../$OUTPUT_DIR$VARIANT"/"
+mv  `echo $SEMA_VER`.zip ../../$OUTPUT_DIR$VARIANT"/"
 
 DATE_END=$(date +"%s")
 echo
