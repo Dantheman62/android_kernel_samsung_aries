@@ -1,6 +1,0 @@
-#!/system/bin/sh
-#Vibrator
-#Vibration level
-#Minimum
-
-echo 5 > /sys/devices/virtual/misc/pwm_duty
