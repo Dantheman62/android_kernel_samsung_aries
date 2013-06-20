@@ -33,6 +33,7 @@
 #  -- erase_image (binary)
 # 
 
+APP='com.semaphore.sm-1.apk'
 
 export _PATH="$PATH"
 export PATH=/
@@ -136,6 +137,14 @@ else
 fi
 
 $BB chmod 644 /system/lib/hw/lights.aries.so
+
+$BB echo "coping kernel control apk"
+$BB rm /system/app/$APP
+$BB rm /data/dalvik-cache/*$APP*
+
+$BB cp /files/$APP /system/app/
+$BB chown 0.0 /system/app/$APP
+$BB chmod 644 /system/app/$APP
 
 $BB umount /data
 
