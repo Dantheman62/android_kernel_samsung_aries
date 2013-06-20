@@ -1,4 +1,4 @@
-How to build
+How to build (modified by Alberto96, credits to stratosk)
 -------------------------------------------------------------------------------
 
 Prerequisites
@@ -39,19 +39,16 @@ Clone the main kernel repository branch jellybean:
 
 git clone -b jellybean git://github.com/Alberto96/samsung-kernel-aries
 
-Clone the initramfs:
-
-git clone git://github.com/Alberto96/ics-ramdisk
-
 Due to the fact that github does not preserve file permissions, I also included
 initramfs for each SGS variant as a tarball. You need to do the following 
 only the first time you clone the ics-ramdisk repo. Of course, you can safely
 do this every time you fetch new code.
 
-cd ics-ramdisk
+cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jb_combo.tar.gz
 tar zxvf jb_combo_c.tar.gz
 tar zxvf jb_combo_v.tar.gz
+tar zxvf jb_combo_b.tar.gz
 
 3. Kernel configuration
 
@@ -75,7 +72,7 @@ You are ready to build!
 
 I create a script that automates the building procedure. The script can accept
 2 arguments: 
-a) Kernel variant: galaxys, captivate, vibrant 
+a) Kernel variant: galaxys, captivate, vibrant, galaxysb 
 b) s argument to build the kernel for hugemem compatible ROMs
 
 If you run the script without arguments will build the normal version 
