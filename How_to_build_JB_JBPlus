@@ -19,14 +19,10 @@ In your home directory (~/) create the directories:
 mkdir -p gearkernel/output/galaxys
 mkdir -p gearkernel/output/captivate
 mkdir -p gearkernel/output/vibrant
+mkdir -p gearkernel/output/galaxysb
 
 The above will be the output directories for galaxy s, captivate and vibrant 
 versions.
-
-Build script also needs a symbolic link to your toolchain bin directory:
-
-cd gearkernel
-ln -s gcc-linaro-arm-linux-gnueabihf-2012.09-20120921_linux/bin/ toolchain <- example
 
 The directory structure is complete. Now, you are ready to clone gearkernel code.
 
@@ -35,29 +31,62 @@ The directory structure is complete. Now, you are ready to clone gearkernel code
 
 While you are still in ~/gearkernel directory do the following.
 
-Clone the main kernel repository branch jellybean:
+Clone the main kernel repository branch jb-4.2.1 (JB and JBPlus):
 
-git clone -b jellybean git://github.com/Alberto96/samsung-kernel-aries
+git clone -b jb-4.2.1 git://github.com/Alberto96/samsung-kernel-aries
 
 Due to the fact that github does not preserve file permissions, I also included
 initramfs for each SGS variant as a tarball. You need to do the following 
 only the first time you clone the ics-ramdisk repo. Of course, you can safely
 do this every time you fetch new code.
 
+If you want to build a JB Kernel then do this:
+
 cd samsung-kernel-aries/ics-ramdisk
-tar zxvf jb_combo.tar.gz
+tar zxvf jb_combo.tar.gz 
 tar zxvf jb_combo_c.tar.gz
 tar zxvf jb_combo_v.tar.gz
 tar zxvf jb_combo_b.tar.gz
 
+Else for a JBPlus Kernel:
+
+cd samsung-kernel-aries/ics-ramdisk
+tar zxvf jbplus_combo.tar.gz 
+tar zxvf jbplus_combo_c.tar.gz
+tar zxvf jbplus_combo_v.tar.gz
+tar zxvf jbplus_combo_b.tar.gz
+
 3. Kernel configuration
 
-I use 3 files to keep kernel's configuration for each variant.
+You need to set the correct toolchain path:
+
+1) Open with gedit sbuildjb.sh and sbuildjbplus.sh located in samsung-kernel-aries folder and search this string : export CROSS_COMPILE=
+2) Edit the path after the = and change it with your toolchain/bin path
+
+Example :
+
+export CROSS_COMPILE=/semaphore/toolchain/bin/arm-gnueabi-
+
+to
+
+export CROSS_COMPILE=new path toolchain/bin
+
+I use 4 files to keep kernel's configuration for each variant.
 The files are placed in arch/arm/configs directory and they are named:
 
-semaphore_galaxys_defconfig
-semaphore_captivate_defconfig
-semaphore_vibrant_defconfig
+For JB Kernel:
+
+GearKernelJB_galaxys_defconfig
+GearKernelJB_galaxysb_defconfig
+GearKernelJB_captivate_defconfig
+GearKernelJB_vibrant_defconfig
+
+For JBPlus Kernel:
+
+GearKernelJBPlus_galaxys_defconfig
+GearKernelJBPlus_galaxysb_defconfig
+GearKernelJBPlus_captivate_defconfig
+GearKernelJBPlus_vibrant_defconfig
 
 When, you will run the build script, the proper configuration will be used
 according to the selected variant (please see next section).
@@ -79,11 +108,21 @@ If you run the script without arguments will build the normal version
 for galaxys.
 To build the kernel for galaxys:
 
+If you want to build a JB Kernel:
+
 cd ~/gearkernel/samsung-kernel-aries
-./sbuild galaxys
+./sbuildjb galaxys
 
 and for 's' version:
-./sbuild galaxys s
+./sbuildjb galaxys s
+
+If you want to build a JBPlus Kernel:
+
+cd ~/gearkernel/samsung-kernel-aries
+./sbuildjbplus galaxys
+
+and for 's' version:
+./sbuildjbplus galaxys s
 
 Wait few minutes (time depends on the machine - on my laptop 15-20) and hopefully 
 the compilation will end.
