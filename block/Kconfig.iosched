@@ -92,12 +92,6 @@ choice
 		  for each queue is defined according to queue priority.
 		  Most suitable for mobile devices.
 
-	config DEFAULT_CFQ
-		bool "CFQ" if IOSCHED_CFQ=y
-
-	config DEFAULT_NOOP
-		bool "No-op"
-
 endchoice
 
 config DEFAULT_IOSCHED
