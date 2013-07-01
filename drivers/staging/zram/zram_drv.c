@@ -833,7 +833,7 @@ static int __init zram_init(void)
 	return 0;
 
 free_devices:
-	while (dev_id)
+	while (dev_id >=0)
 		destroy_device(&devices[--dev_id]);
 	kfree(devices);
 unregister:
