@@ -345,7 +345,7 @@ KALLSYMS	= scripts/kallsyms
 PERL		= perl
 CHECK		= sparse
 
-OPTIMIZATION_FLAGS = -Ofast -march=armv7-a -mtune=cortex-a8 -mfpu=neon -fpredictive-commoning -ffast-math -funswitch-loops -fpredictive-commoning -fgcse-after-reload -ftree-vectorize -fipa-cp-clone -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr -pipe
+OPTIMIZATION_FLAGS = -Ofast -march=armv7-a -mtune=cortex-a8 -mfpu=neon -fpredictive-commoning -ffast-math -funswitch-loops -fpredictive-commoning -fgcse-after-reload -ftree-vectorize -fipa-cp-clone -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr -pipe -funsafe-math-optimizations
 CFLAGS_MODULE   = $(OPTIMIZATION_FLAGS)
 AFLAGS_MODULE   = $(OPTIMIZATION_FLAGS)
 LDFLAGS_MODULE  =
