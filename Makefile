@@ -245,8 +245,8 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = ccache gcc
 HOSTCXX      = ccache g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fno-tree-vectorize -fomit-frame-pointer
-HOSTCXXFLAGS = -O3 -fno-tree-vectorize
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer
+HOSTCXXFLAGS = -O3
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
@@ -345,15 +345,21 @@ KALLSYMS	= scripts/kallsyms
 PERL		= perl
 CHECK		= sparse
 
-OPTIMIZATION_FLAGS = -march=armv7-a -mtune=cortex-a8 -mfpu=neon \
-                     -ffast-math -fsingle-precision-constant \
-                     -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr
-CFLAGS_MODULE   = $(OPTIMIZATION_FLAGS)
-AFLAGS_MODULE   = $(OPTIMIZATION_FLAGS)
-LDFLAGS_MODULE  =
-CFLAGS_KERNEL   = $(OPTIMIZATION_FLAGS)
-AFLAGS_KERNEL   = $(OPTIMIZATION_FLAGS)
+LOW_ARM_FLAGS	= -pipe -march=armv7-a -mcpu=cortex-a8 -mtune=cortex-a8 -marm \
+		  -mfpu=neon -mfloat-abi=softfp -funsafe-math-optimizations \
+		  -ftree-vectorize -mvectorize-with-neon-quad
+
+MODULES	= -fmodulo-sched -fmodulo-sched-allow-regmoves
+
+MODFLAGS 	= -DMODULE
+CFLAGS_MODULE   = $(MODFLAGS)
+AFLAGS_MODULE   = $(MODFLAGS)
+LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
+CFLAGS_KERNEL   = 
+AFLAGS_KERNEL   = 
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
+
+KERNEL_MODS	= $(LOW_ARM_FLAGS) $(MODULES)
 
 
 # Use LINUXINCLUDE when you must reference the include/ directory.
@@ -365,13 +371,14 @@ LINUXINCLUDE    := -I$(srctree)/arch/$(hdr-arch)/include \
 
 KBUILD_CPPFLAGS := -D__KERNEL__
 
-KBUILD_CFLAGS := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
-                   -fno-strict-aliasing -fno-common \
-                   -Werror-implicit-function-declaration \
-                   -Wno-format-security \
-                   -fno-delete-null-pointer-checks
+KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+		   -fno-strict-aliasing -fno-common \
+		   -Werror-implicit-function-declaration \
+		   -Wno-format-security \
+		   -fno-delete-null-pointer-checks \
+		   $(KERNEL_MODS)
 KBUILD_AFLAGS_KERNEL :=
-KBUILD_CFLAGS_KERNEL := $(OPTIMIZATION_FLAGS)
+KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
 KBUILD_CFLAGS_MODULE  := -DMODULE
@@ -560,7 +567,7 @@ endif # $(dot-config)
 # Defaults to vmlinux, but the arch makefile usually adds further targets
 all: vmlinux
 
-KBUILD_CFLAGS += -O3 -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize
+KBUILD_CFLAGS += -O3
 
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
