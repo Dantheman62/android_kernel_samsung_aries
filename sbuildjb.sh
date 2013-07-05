@@ -4,31 +4,31 @@ case "$1" in
         galaxys)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.2"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.2v2"
             ;;
 
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
-	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.2"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.2v2"
             ;;
 
         captivate)
             VARIANT="captivate"
             VER="c"
-	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.2"
+	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.2v2"
             ;;
 
         vibrant)
             VARIANT="vibrant"
             VER="v"
-	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.2"
+	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.2v2"
             ;;
 
         *)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.2"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.2v2"
 esac
 
 if [ "$2" = "s" ] ; then
