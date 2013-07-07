@@ -20,9 +20,6 @@ AFLAGS_head.o += -Wa,-march=armv7-a$(plus_sec)
 AFLAGS_head.o += -Wa,-mcpu=cortex-a8
 HEAD	= head.o
 OBJS	+= misc.o decompress.o
-ifeq ($(CONFIG_KERNEL_LZ4),y)
-CFLAGS_decompress.o := -Os
-endif
 FONTC	= $(srctree)/drivers/video/console/font_acorn_8x8.c
 
 AFLAGS_misc.o +=-Wa,-march=armv7-a$(plus_sec)
