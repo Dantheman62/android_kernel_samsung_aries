@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Linux/arm 3.0.87 Kernel Configuration
+# Linux/arm 3.0.88 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_HAVE_PWM=y
@@ -493,7 +493,7 @@ CONFIG_DYNAMIC_PAGE_WRITEBACK=y
 CONFIG_FORCE_MAX_ZONEORDER=11
 CONFIG_ALIGNMENT_TRAP=y
 CONFIG_ALLOW_CPU_ALIGNMENT=y
-# CONFIG_UACCESS_WITH_MEMCPY is not set
+CONFIG_UACCESS_WITH_MEMCPY=y
 # CONFIG_SECCOMP is not set
 # CONFIG_CC_STACKPROTECTOR is not set
 # CONFIG_DEPRECATED_PARAM_STRUCT is not set
