@@ -345,9 +345,13 @@ KALLSYMS	= scripts/kallsyms
 PERL		= perl
 CHECK		= sparse
 
-LOW_ARM_FLAGS	= -pipe -march=armv7-a -mcpu=cortex-a8 -mtune=cortex-a8 -marm \
+LOW_ARM_FLAGS	= -pipe -march=armv7-a -mcpu=cortex-a8 -mtune=cortex-a8 \
 		  -mfpu=neon -mfloat-abi=softfp -funsafe-math-optimizations \
-		  -ftree-vectorize -mvectorize-with-neon-quad
+		  -ftree-vectorize -ffast-math -mvectorize-with-neon-quad
+
+OPTIMIZATION_FLAGS = -march=armv7-a -mtune=cortex-a8 -mfpu=neon \
+                     -ffast-math -fsingle-precision-constant \
+                     -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr
 
 MODULES	= -fmodulo-sched -fmodulo-sched-allow-regmoves
 
@@ -355,8 +359,8 @@ MODFLAGS 	= -DMODULE
 CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL   = 
-AFLAGS_KERNEL   = 
+CFLAGS_KERNEL   = $(OPTIMIZATION_FLAGS)
+AFLAGS_KERNEL   = $(OPTIMIZATION_FLAGS)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 KERNEL_MODS	= $(LOW_ARM_FLAGS) $(MODULES)
