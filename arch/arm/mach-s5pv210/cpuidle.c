@@ -48,7 +48,7 @@ static unsigned long *regs_save;
 static dma_addr_t phy_regs_save;
 static unsigned int dflags = 0;
 static bool ddebug = false;
-static bool dstats = false;
+static bool dstats = true;
 static bool denabled = false;
 static unsigned int dcnt = 0;
 
