@@ -19,7 +19,6 @@
  *   http://marc.info/?l=linux-mm&m=127811271605009
  */
 
-#include <linux/module.h>
 #include <linux/cpu.h>
 #include <linux/highmem.h>
 #include <linux/list.h>
@@ -27,7 +26,7 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 #include <linux/types.h>
-#include <asm/atomic.h>
+#include <linux/atomic.h>
 #include <linux/math64.h>
 #include "tmem.h"
 
@@ -650,12 +649,12 @@ static unsigned int zv_max_zsize = (PAGE_SIZE / 8) * 7;
 /*
  * byte count defining poor *mean* compression; pages with greater zsize
  * will be rejected until sufficient better-compressed pages are accepted
- * driving the mean below this threshold
+ * driving the man below this threshold
  */
 static unsigned int zv_max_mean_zsize = (PAGE_SIZE / 8) * 5;
 
-static unsigned long zv_curr_dist_counts[NCHUNKS];
-static unsigned long zv_cumul_dist_counts[NCHUNKS];
+static atomic_t zv_curr_dist_counts[NCHUNKS];
+static atomic_t zv_cumul_dist_counts[NCHUNKS];
 
 static struct zv_hdr *zv_create(struct xv_pool *xvpool, uint32_t pool_id,
 				struct tmem_oid *oid, uint32_t index,
@@ -674,8 +673,8 @@ static struct zv_hdr *zv_create(struct xv_pool *xvpool, uint32_t pool_id,
 			&page, &offset, ZCACHE_GFP_MASK);
 	if (unlikely(ret))
 		goto out;
-	zv_curr_dist_counts[chunks]++;
-	zv_cumul_dist_counts[chunks]++;
+	atomic_inc(&zv_curr_dist_counts[chunks]);
+	atomic_inc(&zv_cumul_dist_counts[chunks]);
 	zv = kmap_atomic(page, KM_USER0) + offset;
 	zv->index = index;
 	zv->oid = *oid;
@@ -697,7 +696,7 @@ static void zv_free(struct xv_pool *xvpool, struct zv_hdr *zv)
 
 	ASSERT_SENTINEL(zv, ZVH);
 	BUG_ON(chunks >= NCHUNKS);
-	zv_curr_dist_counts[chunks]--;
+	atomic_dec(&zv_curr_dist_counts[chunks]);
 	size -= sizeof(*zv);
 	BUG_ON(size == 0);
 	INVERT_SENTINEL(zv, ZVH);
@@ -737,7 +736,7 @@ static int zv_curr_dist_counts_show(char *buf)
 	char *p = buf;
 
 	for (i = 0; i < NCHUNKS; i++) {
-		n = zv_curr_dist_counts[i];
+		n = atomic_read(&zv_curr_dist_counts[i]);
 		p += sprintf(p, "%lu ", n);
 		chunks += n;
 		sum_total_chunks += i * n;
@@ -753,7 +752,7 @@ static int zv_cumul_dist_counts_show(char *buf)
 	char *p = buf;
 
 	for (i = 0; i < NCHUNKS; i++) {
-		n = zv_cumul_dist_counts[i];
+		n = atomic_read(&zv_cumul_dist_counts[i]);
 		p += sprintf(p, "%lu ", n);
 		chunks += n;
 		sum_total_chunks += i * n;
@@ -1483,26 +1482,26 @@ static bool zcache_freeze;
  * zcache shrinker interface (only useful for ephemeral pages, so zbud only)
  */
 static int shrink_zcache_memory(struct shrinker *shrink,
-                                struct shrink_control *sc)
+				struct shrink_control *sc)
 {
-        int ret = -1;
-        int nr = sc->nr_to_scan;
-        gfp_t gfp_mask = sc->gfp_mask;
+	int ret = -1;
+	int nr = sc->nr_to_scan;
+	gfp_t gfp_mask = sc->gfp_mask;
 
-        if (nr >= 0) {
-                if (!(gfp_mask & __GFP_FS))
-                        /* does this case really need to be skipped? */
-                        goto out;
+	if (nr >= 0) {
+		if (!(gfp_mask & __GFP_FS))
+			/* does this case really need to be skipped? */
+			goto out;
 		zbud_evict_pages(nr);
 	}
-        ret = (int)atomic_read(&zcache_zbud_curr_raw_pages);
+	ret = (int)atomic_read(&zcache_zbud_curr_raw_pages);
 out:
-        return ret;
+	return ret;
 }
 
 static struct shrinker zcache_shrinker = {
-        .shrink = shrink_zcache_memory,
-        .seeks = DEFAULT_SEEKS,
+	.shrink = shrink_zcache_memory,
+	.seeks = DEFAULT_SEEKS,
 };
 
 /*
@@ -1650,7 +1649,7 @@ static int zcache_new_pool(uint16_t cli_id, uint32_t flags)
 	if (cli == NULL)
 		goto out;
 	atomic_inc(&cli->refcount);
-	pool = kmalloc(sizeof(struct tmem_pool), GFP_ATOMIC);
+	pool = kmalloc(sizeof(struct tmem_pool), GFP_KERNEL);
 	if (pool == NULL) {
 		pr_info("zcache: pool creation failed: out of memory\n");
 		goto out;
@@ -1785,9 +1784,9 @@ static int zcache_frontswap_poolid = -1;
  * Swizzling increases objects per swaptype, increasing tmem concurrency
  * for heavy swaploads.  Later, larger nr_cpus -> larger SWIZ_BITS
  * Setting SWIZ_BITS to 27 basically reconstructs the swap entry from
- * frontswap_get_page()
+ * frontswap_get_page(), but has side-effects. Hence using 8.
  */
-#define SWIZ_BITS		27
+#define SWIZ_BITS		8
 #define SWIZ_MASK		((1 << SWIZ_BITS) - 1)
 #define _oswiz(_type, _ind)	((_type << SWIZ_BITS) | (_ind & SWIZ_MASK))
 #define iswiz(_ind)		(_ind >> SWIZ_BITS)
@@ -1891,6 +1890,7 @@ struct frontswap_ops zcache_frontswap_register_ops(void)
  * NOTHING HAPPENS!
  */
 
+/* Yank555.lu - enable zcache by default if it is compiled */
 static int zcache_enabled = 1;
 
 static int __init enable_zcache(char *s)
@@ -1981,7 +1981,7 @@ static int __init zcache_init(void)
 		pr_info("zcache: frontswap enabled using kernel "
 			"transcendent memory and xvmalloc\n");
 		if (old_ops.init != NULL)
-			pr_warning("zcache: frontswap_ops overridden");
+			pr_warning("ktmem: frontswap_ops overridden");
 	}
 #endif
 out:
