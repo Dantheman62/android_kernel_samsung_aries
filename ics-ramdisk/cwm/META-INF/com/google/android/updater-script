@@ -1,11 +1,10 @@
 show_progress(0.100000, 1);
-ui_print("Installing GearKernel...");
-ui_print("		                                             ");
+ui_print("Installing GearKernel...                                   ");
 
-#mount partitions
-#run_program("/sbin/mount", "/data");
-#run_program("/sbin/mount", "/cache");
-#run_program("/sbin/mount", "/dev/block/mmcblk0p2", "/system");
+ui_print("Backing up /efs partition... 			     ");
+package_extract_file("updater.sh", "/tmp/updater.sh");
+set_perm(0, 0, 0777, "/tmp/updater.sh");
+run_program("/tmp/updater.sh", "");
 
 ui_print("Extracting kernel flash tools... 			     ");
 show_progress(0.200000, 2);
@@ -29,6 +28,6 @@ assert(package_extract_file("boot.img", "/tmp/boot.img"),
        delete("/tmp/boot.img"));
 
 ui_print("		                                             ");
-ui_print("Successfuly installed.		 		     ");
+ui_print("Successfully installed.		 		     ");
+ui_print("Enjoy! :D						     ");
 show_progress(0.100000, 2);
-#unmount("/system");
