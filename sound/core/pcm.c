@@ -21,7 +21,6 @@
 
 #include <linux/init.h>
 #include <linux/slab.h>
-#include <linux/module.h>
 #include <linux/time.h>
 #include <linux/mutex.h>
 #include <sound/core.h>
@@ -636,7 +635,7 @@ static inline int snd_pcm_substream_proc_done(struct snd_pcm_substream *substrea
  * calling this, i.e. zero must be given to the argument of
  * snd_pcm_new().
  *
- * Return: Zero if successful, or a negative error code on failure.
+ * Returns zero if successful, or a negative error code on failure.
  */
 int snd_pcm_new_stream(struct snd_pcm *pcm, int stream, int substream_count)
 {
@@ -758,7 +757,7 @@ static int _snd_pcm_new(struct snd_card *card, const char *id, int device,
  * The pcm operators have to be set afterwards to the new instance
  * via snd_pcm_set_ops().
  *
- * Return: Zero if successful, or a negative error code on failure.
+ * Returns zero if successful, or a negative error code on failure.
  */
 int snd_pcm_new(struct snd_card *card, const char *id, int device,
 		int playback_count, int capture_count, struct snd_pcm **rpcm)
@@ -786,7 +785,7 @@ EXPORT_SYMBOL(snd_pcm_new);
  * The pcm operators have to be set afterwards to the new instance
  * via snd_pcm_set_ops().
  *
- * Return: Zero if successful, or a negative error code on failure.
+ * Returns zero if successful, or a negative error code on failure.
  */
 int snd_pcm_new_internal(struct snd_card *card, const char *id, int device,
 	int playback_count, int capture_count,

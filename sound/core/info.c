@@ -104,7 +104,7 @@ static int resize_info_buffer(struct snd_info_buffer *buffer,
  *
  * Outputs the string on the procfs buffer just like printf().
  *
- * Return: The size of output string, or a negative error code.
+ * Returns the size of output string.
  */
 int snd_iprintf(struct snd_info_buffer *buffer, const char *fmt, ...)
 {
@@ -693,7 +693,7 @@ int snd_info_card_free(struct snd_card *card)
  *
  * Reads one line from the buffer and stores the string.
  *
- * Return: Zero if successful, or 1 if error or EOF.
+ * Returns zero if successful, or 1 if error or EOF.
  */
 int snd_info_get_line(struct snd_info_buffer *buffer, char *line, int len)
 {
