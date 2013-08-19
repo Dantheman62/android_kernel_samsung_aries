@@ -55,7 +55,11 @@ INIT_DIR=$CONFIG_INITRAMFS_SOURCE
 MODULES_DIR=`echo $INIT_DIR`files/modules
 KERNEL_DIR=`pwd`
 OUTPUT_DIR=../output/
-CWM_DIR=./ics-ramdisk/cwm/
+if [ "$2" = "s" ] ; then
+	CWM_DIR=./ics-ramdisk/cwm_s_jb3/
+else
+	CWM_DIR=./ics-ramdisk/cwm/
+fi
 
 echo "LOCALVERSION="$LOCALVERSION
 echo "CROSS_COMPILE="$CROSS_COMPILE
@@ -69,8 +73,6 @@ echo "CWM_DIR="$CWM_DIR
 if [ "$2" = "s" ] ; then
         echo "CONFIG_S5P_HUGEMEM=y" >> .config
 fi
-
-
 
 make -j3 modules
 
