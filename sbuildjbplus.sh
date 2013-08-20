@@ -5,30 +5,35 @@ case "$1" in
             VARIANT="galaxys"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_1.0.6"
+	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jbplus_combo/ics_rec_init
             ;;
 
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxySB_1.0.6"
+	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jbplus_combo/ics_rec_init
             ;;
 
         captivate)
             VARIANT="captivate"
             VER="c"
 	    BASE_SEMA_VER="GearKernel_JBPlus_Captivate_1.0.6"
+	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jbplus_combo/ics_rec_init
             ;;
 
         vibrant)
             VARIANT="vibrant"
             VER="v"
 	    BASE_SEMA_VER="GearKernel_JBPlus_Vibrant_1.0.6"
+	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jbplus_combo_v/ics_rec_init
             ;;
 
         *)
             VARIANT="galaxys"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_1.0.6"
+	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jbplus_combo/ics_rec_init
 esac
 
 if [ "$2" = "s" ] ; then
@@ -40,7 +45,7 @@ SEMA_VER=$BASE_SEMA_VER$VER
 #export KBUILD_BUILD_VERSION="2"
 export LOCALVERSION="-"`echo $SEMA_VER`
 #export CROSS_COMPILE=/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-2012.09-20120921_linux/bin/arm-linux-gnueabihf-
-export CROSS_COMPILE=~/semaphore/toolchain/arm-cortex_a8-linux-gnueabi-linaro_4.7.4-2013.07/bin/arm-gnueabi-
+export CROSS_COMPILE=~/semaphore/toolchain/arm-cortex_a8-linux-gnueabi-linaro_4.7.4-2013.08/bin/arm-gnueabi-
 export ARCH=arm
 
 echo 
@@ -94,6 +99,10 @@ cp arch/arm/boot/zImage $CWM_DIR"boot.img"
 cd $CWM_DIR
 zip -r `echo $SEMA_VER`.zip *
 mv  `echo $SEMA_VER`.zip ../../$OUTPUT_DIR$VARIANT"/"
+
+cd ../../
+rm -r ics-ramdisk/jbplus_combo/ics_rec_init
+rm -r ics-ramdisk/jbplus_combo_v/ics_rec_init
 
 DATE_END=$(date +"%s")
 echo
