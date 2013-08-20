@@ -40,29 +40,32 @@ initramfs for each SGS variant as a tarball. You need to do the following
 only the first time you clone the ics-ramdisk repo. Of course, you can safely
 do this every time you fetch new code.
 
+Captivate, Galaxy S Brazil and Galaxy S shares the same ramdisk. (except recovery)
+
+Extract all Recoveries:
+
+tar zxvf ics_rec_init.tar.gz
+tar zxvf ics_rec_init_v.tar.gz
+tar zxvf ics_rec_init_c.tar.gz
+tar zxvf ics_rec_init_b.tar.gz
+
 If you want to build a JB Kernel then do this:
 
 cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jb_combo.tar.gz 
-tar zxvf jb_combo_c.tar.gz
 tar zxvf jb_combo_v.tar.gz
-tar zxvf jb_combo_b.tar.gz
 
 For a JBPlus Kernel:
 
 cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jbplus_combo.tar.gz 
-tar zxvf jbplus_combo_c.tar.gz
 tar zxvf jbplus_combo_v.tar.gz
-tar zxvf jbplus_combo_b.tar.gz
 
 Or a JB3 Kernel:
 
 cd samsung-kernel-aries/ics-ramdisk
-tar zxvf jb3_combo.tar.gz 
-tar zxvf jb3_combo_c.tar.gz
+tar zxvf jb3_combo.tar.gz
 tar zxvf jb3_combo_v.tar.gz
-tar zxvf jb3_combo_b.tar.gz
 
 3. Kernel configuration
 
