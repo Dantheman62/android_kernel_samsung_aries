@@ -4,35 +4,35 @@ case "$1" in
         galaxys)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.6"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.7"
 	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
             ;;
 
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
-	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.6"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.7"
 	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo/ics_rec_init
             ;;
 
         captivate)
             VARIANT="captivate"
             VER="c"
-	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.6"
+	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.7"
 	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo/ics_rec_init
             ;;
 
         vibrant)
             VARIANT="vibrant"
             VER="v"
-	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.6"
+	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.7"
 	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_v/ics_rec_init
             ;;
 
         *)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.6"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.7"
 	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
 esac
 
