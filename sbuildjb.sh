@@ -22,7 +22,7 @@ case "$1" in
 	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo/ics_rec_init
             ;;
 
-        galaxysb)
+        galaxysbm)
             VARIANT="galaxysbm"
             VER="b"
 	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxySB_1.0.8"
