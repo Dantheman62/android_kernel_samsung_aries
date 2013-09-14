@@ -4,7 +4,7 @@ How to build (modified by Alberto96, credits to stratosk)
 Prerequisites
 -------------
 Basic knowledge of Linux and compiling is required to be able to build a kernel. 
-You need a modern Linux box (preferably) with git and latest linaro toolchain optimized for Cortex-A8 installed
+You need a modern Linux box (preferably) with git and latest linaro toolchain optimized for Cortex-A8 installed (install this in gearkernel/toolchain folder)
 (http://forum.xda-developers.com/showthread.php?t=2098133).
 
 First you need to setup the directory that within you will clone the kernel and 
