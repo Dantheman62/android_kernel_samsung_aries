@@ -8,11 +8,25 @@ case "$1" in
 	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
             ;;
 
+        miuis)
+            VARIANT="galaxysm"
+            VER=""
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxyS_1.0.7"
+	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo_m/ics_rec_init
+            ;;
+
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
 	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.7"
 	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo/ics_rec_init
+            ;;
+
+        miuisb)
+            VARIANT="galaxysbm"
+            VER="b"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxySB_1.0.7"
+	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo_m/ics_rec_init
             ;;
 
         captivate)
@@ -102,6 +116,7 @@ mv  `echo $SEMA_VER`.zip ../../$OUTPUT_DIR$VARIANT"/"
 
 cd ../../
 rm -r ics-ramdisk/jb_combo/ics_rec_init
+rm -r ics-ramdisk/jb_combo_m/ics_rec_init
 rm -r ics-ramdisk/jb_combo_v/ics_rec_init
 
 DATE_END=$(date +"%s")
