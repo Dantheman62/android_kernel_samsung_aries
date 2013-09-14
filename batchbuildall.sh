@@ -10,7 +10,11 @@ echo "Building Galaxy S Stock RAM version"
 
 echo "Building Galaxy S BigMem RAM version"
 
-./sbuildjb.sh galaxys s 
+./sbuildjb.sh galaxys s
+
+echo "Building Galaxy S MIUI BigMem RAM version"
+
+./sbuildjb.sh galaxysm s  
 
 make clean
 
@@ -40,7 +44,11 @@ echo "Building Galaxy S B Stock RAM version"
 
 echo "Building Galaxy S B BigMem RAM version"
 
-./sbuildjb.sh galaxysb s 
+./sbuildjb.sh galaxysb s
+
+echo "Building Galaxy S B MIUI BigMem RAM version"
+
+./sbuildjb.sh galaxysbm s  
 
 make clean
 
