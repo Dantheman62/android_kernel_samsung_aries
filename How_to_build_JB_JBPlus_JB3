@@ -61,11 +61,16 @@ cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jbplus_combo.tar.gz 
 tar zxvf jbplus_combo_v.tar.gz
 
-Or a JB3 Kernel:
+JB3 Kernel:
 
 cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jb3_combo.tar.gz
 tar zxvf jb3_combo_v.tar.gz
+
+Or a MIUI JB Kernel:
+
+cd samsung-kernel-aries/ics-ramdisk
+tar zxvf jb_combo_m.tar.gz 
 
 3. Kernel configuration
 
@@ -105,6 +110,11 @@ GearKernelJB3_galaxys_defconfig
 GearKernelJB3_galaxysb_defconfig
 GearKernelJB3_captivate_defconfig
 GearKernelJB3_vibrant_defconfig
+
+For MIUI JB Kernel:
+
+GearKernelJB_galaxysm_defconfig
+GearKernelJB_galaxysbm_defconfig
 
 When, you will run the build script, the proper configuration will be used
 according to the selected variant (please see next section).
@@ -149,6 +159,14 @@ cd ~/gearkernel/samsung-kernel-aries
 
 and for 's' version:
 ./sbuildjb3 galaxys s
+
+If you want to build a MIUI JB Kernel:
+
+cd ~/gearkernel/samsung-kernel-aries
+./sbuildjb galaxysm
+
+and for 's' version:
+./sbuildjb galaxysm s
 
 Wait few minutes (time depends on the machine - on my build machine 4-5 minutes) and hopefully 
 the compilation will end.
