@@ -20,6 +20,8 @@ mkdir -p gearkernel/output/galaxys
 mkdir -p gearkernel/output/captivate
 mkdir -p gearkernel/output/vibrant
 mkdir -p gearkernel/output/galaxysb
+mkdir -p gearkernel/output/galaxysm
+mkdir -p gearkernel/output/galaxysbm
 
 The above will be the output directories for galaxy s, captivate and vibrant 
 versions.
