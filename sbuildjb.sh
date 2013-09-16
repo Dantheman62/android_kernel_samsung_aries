@@ -36,11 +36,25 @@ case "$1" in
 	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo/ics_rec_init
             ;;
 
+        captivatem)
+            VARIANT="captivatem"
+            VER="c"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_Captivate_1.0.8"
+	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo_m/ics_rec_init
+            ;;
+
         vibrant)
             VARIANT="vibrant"
             VER="v"
 	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.8"
 	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_v/ics_rec_init
+            ;;
+
+        vibrantm)
+            VARIANT="vibrantm"
+            VER="v"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_Vibrant_1.0.8"
+	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_mv/ics_rec_init
             ;;
 
         *)
@@ -117,6 +131,7 @@ mv  `echo $SEMA_VER`.zip ../../$OUTPUT_DIR$VARIANT"/"
 cd ../../
 rm -r ics-ramdisk/jb_combo/ics_rec_init
 rm -r ics-ramdisk/jb_combo_m/ics_rec_init
+rm -r ics-ramdisk/jb_combo_mv/ics_rec_init
 rm -r ics-ramdisk/jb_combo_v/ics_rec_init
 
 DATE_END=$(date +"%s")

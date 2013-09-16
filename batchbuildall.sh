@@ -26,6 +26,10 @@ echo "Building Vibrant BigMem RAM version"
 
 ./sbuildjb.sh vibrant s
 
+echo "Building Vibrant MIUI BigMem RAM version"
+
+./sbuildjb.sh vibrantm s
+
 make clean 
 
 echo "Building Captivate Stock RAM version"
@@ -34,7 +38,11 @@ echo "Building Captivate Stock RAM version"
 
 echo "Building Captivate BigMem RAM version"
 
-./sbuildjb.sh captivate s
+./sbuildjb.sh captivate s  
+
+echo "Building Captivate MIUI BigMem RAM version"
+
+./sbuildjb.sh captivatem s  
 
 make clean
 

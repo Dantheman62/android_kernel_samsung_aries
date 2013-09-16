@@ -14,7 +14,15 @@ echo "Building Galaxy S BigMem RAM version"
 
 echo "Building Galaxy S MIUI BigMem RAM version"
 
-./sbuildjb.sh galaxysm s  
+./sbuildjb.sh galaxysm s
+
+echo "Building Vibrant MIUI BigMem RAM version"
+
+./sbuildjb.sh vibrantm s    
+
+echo "Building Captivate MIUI BigMem RAM version"
+
+./sbuildjb.sh captivatem s  
 
 make clean
 

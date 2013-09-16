@@ -22,12 +22,12 @@ mkdir -p gearkernel/output/vibrant
 mkdir -p gearkernel/output/galaxysb
 mkdir -p gearkernel/output/galaxysm
 mkdir -p gearkernel/output/galaxysbm
+mkdir -p gearkernel/output/captivatem
+mkdir -p gearkernel/output/vibrantm
 
-The above will be the output directories for galaxy s, captivate and vibrant 
-versions.
+The above will be the output directories for Galaxy S, Galaxy S B (Brazil), Captivate and Vibrant versions.
 
-The directory structure is complete. Now, you are ready to clone gearkernel code.
-
+The directory structure is complete. Now, you are ready to clone GearKernel code.
 
 2. Setting up repositories
 
@@ -42,7 +42,7 @@ initramfs for each SGS variant as a tarball. You need to do the following
 only the first time you clone the ics-ramdisk repo. Of course, you can safely
 do this every time you fetch new code.
 
-Captivate, Galaxy S Brazil and Galaxy S shares the same ramdisk. (except recovery)
+Captivate, Galaxy S B and Galaxy S shares the same ramdisk. (except recovery)
 
 Extract all Recoveries:
 
@@ -63,27 +63,28 @@ cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jbplus_combo.tar.gz 
 tar zxvf jbplus_combo_v.tar.gz
 
-JB3 Kernel:
+For a JB3 Kernel:
 
 cd samsung-kernel-aries/ics-ramdisk
 tar zxvf jb3_combo.tar.gz
 tar zxvf jb3_combo_v.tar.gz
 
-Or a MIUI JB Kernel:
+Or for a MIUI JB Kernel:
 
 cd samsung-kernel-aries/ics-ramdisk
-tar zxvf jb_combo_m.tar.gz 
+tar zxvf jb_combo_m.tar.gz
+tar zxvf jb_combo_mv.tar.gz 
 
 3. Kernel configuration
 
 You need to set the correct toolchain path:
 
-1) Open with gedit sbuildjb.sh & sbuildjbplus.sh & sbuildjb3.sh located in samsung-kernel-aries folder and search this string : export CROSS_COMPILE=
+1) Open with gedit (or with your favourite editor) sbuildjb.sh & sbuildjbplus.sh & sbuildjb3.sh located in samsung-kernel-aries folder and search this string : export CROSS_COMPILE=
 2) Edit the path after the = and change it with your toolchain/bin path
 
 Example :
 
-export CROSS_COMPILE=/semaphore/toolchain/bin/arm-gnueabi-
+export CROSS_COMPILE=/gearkernel/toolchain/bin/arm-gnueabi-
 
 to
 
@@ -117,6 +118,8 @@ For MIUI JB Kernel:
 
 GearKernelJB_galaxysm_defconfig
 GearKernelJB_galaxysbm_defconfig
+GearKernelJB_captivatem_defconfig
+GearKernelJB_vibrantm_defconfig
 
 When, you will run the build script, the proper configuration will be used
 according to the selected variant (please see next section).
@@ -165,9 +168,6 @@ and for 's' version:
 If you want to build a MIUI JB Kernel:
 
 cd ~/gearkernel/samsung-kernel-aries
-./sbuildjb galaxysm
-
-and for 's' version:
 ./sbuildjb galaxysm s
 
 Wait few minutes (time depends on the machine - on my build machine 4-5 minutes) and hopefully 
