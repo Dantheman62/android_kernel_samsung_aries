@@ -1,0 +1,22 @@
+#!/system/bin/sh
+# GearKernel Script
+# Tweaks for Smoothness and Speed
+# by Alberto96
+
+setprop ro.bq.gpu_to_cpu_unsupported 1
+setprop ro.hwui.disable_scissor_opt true
+setprop dalvik.vm.checkjni false
+setprop ro.kernel.android.checkjni 0
+setprop persist.sys.use_16bpp_alpha 1
+setprop persist.sys.use_dithering 0
+setprop ro.kernel.checkjni 0
+setprop sys.checkfs.fat false
+setprop ro.config.hw_quickpoweron true
+setprop persist.sys.shutdown.mode hibernate
+setprop persist.sys.purgeable_assets 1
+setprop ro.lge.proximity.delay 25
+setprop mot.proximity.delay 25
+setprop ro.telephony.call_ring.delay 0
+setprop debug.gr.swapinterval 0
+setprop windowsmgr.max_events_per_sec 250
+setprop ro.ext4fs 1
