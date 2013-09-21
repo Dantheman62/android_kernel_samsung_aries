@@ -1,0 +1,9 @@
+#!/system/bin/sh
+# GearKernel Script
+# Restore EFS Partition
+# by Alberto96
+
+busybox cp -Rf /system/GearKernel/efs/* /efs/
+busybox chown radio radio /efs
+busybox chmod 770 /efs/bluetooth
+busybox chmod 770 /efs/imei
