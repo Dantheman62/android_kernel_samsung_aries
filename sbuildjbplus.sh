@@ -5,35 +5,40 @@ case "$1" in
             VARIANT="galaxys"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jbplus_combo/files/
             ;;
 
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxySB_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_b ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jbplus_combo/files/
             ;;
 
         captivate)
             VARIANT="captivate"
             VER="c"
 	    BASE_SEMA_VER="GearKernel_JBPlus_Captivate_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_c ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jbplus_combo/files/
             ;;
 
         vibrant)
             VARIANT="vibrant"
             VER="v"
 	    BASE_SEMA_VER="GearKernel_JBPlus_Vibrant_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jbplus_combo_v/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_v ics-ramdisk/jbplus_combo_v/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jbplus_combo_v/files/
             ;;
 
         *)
             VARIANT="galaxys"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JBPlus_GalaxyS_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jbplus_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jbplus_combo/files/
 esac
 
 if [ "$2" = "s" ] ; then

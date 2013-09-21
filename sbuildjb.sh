@@ -5,63 +5,72 @@ case "$1" in
             VARIANT="galaxys"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
             ;;
 
         galaxysm)
             VARIANT="galaxysm"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxyS_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo_m/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo_m/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_m/files/
             ;;
 
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
 	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
             ;;
 
         galaxysbm)
             VARIANT="galaxysbm"
             VER="b"
 	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxySB_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo_m/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo_m/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_m/files/
             ;;
 
         captivate)
             VARIANT="captivate"
             VER="c"
 	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
             ;;
 
         captivatem)
             VARIANT="captivatem"
             VER="c"
 	    BASE_SEMA_VER="GearKernel_JB_MIUI_Captivate_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo_m/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo_m/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_m/files/
             ;;
 
         vibrant)
             VARIANT="vibrant"
             VER="v"
 	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_v/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_v/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_v/files/
             ;;
 
         vibrantm)
             VARIANT="vibrantm"
             VER="v"
 	    BASE_SEMA_VER="GearKernel_JB_MIUI_Vibrant_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_mv/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_mv/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_mv/files/
             ;;
 
         *)
             VARIANT="galaxys"
             VER=""
 	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.8"
-	    cp -r ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
+	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
 esac
 
 if [ "$2" = "s" ] ; then
