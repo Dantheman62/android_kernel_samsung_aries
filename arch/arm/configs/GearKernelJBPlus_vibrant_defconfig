@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Linux/arm 3.0.96 Kernel Configuration
+# Linux/arm 3.0.97 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_HAVE_PWM=y
@@ -955,6 +955,7 @@ CONFIG_FIRMWARE_IN_KERNEL=y
 CONFIG_EXTRA_FIRMWARE=""
 # CONFIG_SYS_HYPERVISOR is not set
 # CONFIG_SYNC is not set
+CONFIG_DMA_SHARED_BUFFER=y
 # CONFIG_CONNECTOR is not set
 CONFIG_MTD=y
 # CONFIG_MTD_DEBUG is not set
@@ -1879,7 +1880,7 @@ CONFIG_VIDEO_TV20=y
 # Graphics support
 #
 # CONFIG_DRM is not set
-# CONFIG_ION is not set
+CONFIG_ION=y
 CONFIG_PVR_SGX=y
 CONFIG_PVR_BUILD_RELEASE=y
 # CONFIG_PVR_BUILD_DEBUG is not set
@@ -2826,6 +2827,7 @@ CONFIG_ZLIB_DEFLATE=y
 # CONFIG_XZ_DEC is not set
 # CONFIG_XZ_DEC_BCJ is not set
 CONFIG_DECOMPRESS_LZMA=y
+CONFIG_GENERIC_ALLOCATOR=y
 CONFIG_REED_SOLOMON=y
 CONFIG_REED_SOLOMON_ENC8=y
 CONFIG_REED_SOLOMON_DEC8=y
