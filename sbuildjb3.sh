@@ -4,7 +4,7 @@ case "$1" in
         galaxys)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB3_GalaxyS_1.0.8"
+	    BASE_SEMA_VER="GearKernel_JB3_GalaxyS_1.0.9"
 	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb3_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb3_combo/files/
             ;;
@@ -12,7 +12,7 @@ case "$1" in
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
-	    BASE_SEMA_VER="GearKernel_JB3_GalaxySB_1.0.8"
+	    BASE_SEMA_VER="GearKernel_JB3_GalaxySB_1.0.9"
 	    cp -rf ics-ramdisk/ics_rec_init_b ics-ramdisk/jb3_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb3_combo/files/
             ;;
@@ -20,7 +20,7 @@ case "$1" in
         captivate)
             VARIANT="captivate"
             VER="c"
-	    BASE_SEMA_VER="GearKernel_JB3_Captivate_1.0.8"
+	    BASE_SEMA_VER="GearKernel_JB3_Captivate_1.0.9"
 	    cp -rf ics-ramdisk/ics_rec_init_c ics-ramdisk/jb3_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb3_combo/files/
             ;;
@@ -28,7 +28,7 @@ case "$1" in
         vibrant)
             VARIANT="vibrant"
             VER="v"
-	    BASE_SEMA_VER="GearKernel_JB3_Vibrant_1.0.8"
+	    BASE_SEMA_VER="GearKernel_JB3_Vibrant_1.0.9"
 	    cp -rf ics-ramdisk/ics_rec_init_v ics-ramdisk/jb3_combo_v/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb3_combo_v/files/
             ;;
@@ -36,7 +36,7 @@ case "$1" in
         *)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB3_GalaxyS_1.0.8"
+	    BASE_SEMA_VER="GearKernel_JB3_GalaxyS_1.0.9"
 	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb3_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb3_combo/files/
 esac
