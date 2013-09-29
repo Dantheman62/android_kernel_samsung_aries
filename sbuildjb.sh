@@ -4,7 +4,7 @@ case "$1" in
         galaxys)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
             ;;
@@ -12,7 +12,7 @@ case "$1" in
         galaxysm)
             VARIANT="galaxysm"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxyS_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxyS_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo_m/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_m/files/
             ;;
@@ -20,7 +20,7 @@ case "$1" in
         galaxysb)
             VARIANT="galaxysb"
             VER="b"
-	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxySB_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
             ;;
@@ -28,7 +28,7 @@ case "$1" in
         galaxysbm)
             VARIANT="galaxysbm"
             VER="b"
-	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxySB_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_GalaxySB_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init_b ics-ramdisk/jb_combo_m/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_m/files/
             ;;
@@ -36,7 +36,7 @@ case "$1" in
         captivate)
             VARIANT="captivate"
             VER="c"
-	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_Captivate_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
             ;;
@@ -44,7 +44,7 @@ case "$1" in
         captivatem)
             VARIANT="captivatem"
             VER="c"
-	    BASE_SEMA_VER="GearKernel_JB_MIUI_Captivate_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_Captivate_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init_c ics-ramdisk/jb_combo_m/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_m/files/
             ;;
@@ -52,7 +52,7 @@ case "$1" in
         vibrant)
             VARIANT="vibrant"
             VER="v"
-	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_Vibrant_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_v/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_v/files/
             ;;
@@ -60,7 +60,7 @@ case "$1" in
         vibrantm)
             VARIANT="vibrantm"
             VER="v"
-	    BASE_SEMA_VER="GearKernel_JB_MIUI_Vibrant_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_MIUI_Vibrant_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init_v ics-ramdisk/jb_combo_mv/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo_mv/files/
             ;;
@@ -68,7 +68,7 @@ case "$1" in
         *)
             VARIANT="galaxys"
             VER=""
-	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.9"
+	    BASE_SEMA_VER="GearKernel_JB_GalaxyS_1.0.9v2"
 	    cp -rf ics-ramdisk/ics_rec_init ics-ramdisk/jb_combo/ics_rec_init
 	    cp -rf ics-ramdisk/init.d ics-ramdisk/jb_combo/files/
 esac
