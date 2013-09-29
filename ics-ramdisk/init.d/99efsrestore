@@ -3,7 +3,7 @@
 # Restore EFS Partition
 # by Alberto96
 
-busybox cp -Rf /system/GearKernel/efs/* /efs/
-busybox chown radio radio /efs
-busybox chmod 770 /efs/bluetooth
-busybox chmod 770 /efs/imei
+cp -Rf /system/GearKernel/efs/* /efs/
+chown radio radio /efs
+chmod 770 /efs/bluetooth
+chmod 770 /efs/imei
