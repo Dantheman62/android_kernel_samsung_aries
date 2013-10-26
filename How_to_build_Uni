@@ -31,7 +31,7 @@ While you are still in ~/gearkernel directory do the following.
 
 Clone the main kernel repository branch jb-4.2.1 (Universal):
 
-git clone -b jb-4.2.1 git://github.com/Alberto96/samsung-kernel-aries
+git clone -b universal git://github.com/Alberto96/samsung-kernel-aries
 
 Due to the fact that github does not preserve file permissions, I also included
 initramfs for each SGS variant as a tarball. You need to do the following 
