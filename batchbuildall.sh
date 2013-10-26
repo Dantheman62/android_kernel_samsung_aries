@@ -1,154 +1,46 @@
 #!/bin/bash
 
-echo "GearKernel JB Batch Build..."
+echo "GearKernel Universal Batch Build..."
 
 make clean
 
 echo "Building Galaxy S Stock RAM version"
 
-./sbuildjb.sh galaxys 
+./sbuildgear.sh galaxys 
 
 echo "Building Galaxy S BigMem RAM version"
 
-./sbuildjb.sh galaxys s
-
-echo "Building Galaxy S MIUI BigMem RAM version"
-
-./sbuildjb.sh galaxysm s  
+./sbuildgear.sh galaxys s 
 
 make clean
 
 echo "Building Vibrant Stock RAM version"
 
-./sbuildjb.sh vibrant
+./sbuildgear.sh vibrant
 
 echo "Building Vibrant BigMem RAM version"
 
-./sbuildjb.sh vibrant s
-
-echo "Building Vibrant MIUI BigMem RAM version"
-
-./sbuildjb.sh vibrantm s
+./sbuildgear.sh vibrant s
 
 make clean 
 
 echo "Building Captivate Stock RAM version"
 
-./sbuildjb.sh captivate
+./sbuildgear.sh captivate
 
 echo "Building Captivate BigMem RAM version"
 
-./sbuildjb.sh captivate s  
-
-echo "Building Captivate MIUI BigMem RAM version"
-
-./sbuildjb.sh captivatem s  
+./sbuildgear.sh captivate s   
 
 make clean
 
 echo "Building Galaxy S B Stock RAM version"
 
-./sbuildjb.sh galaxysb 
+./sbuildgear.sh galaxysb 
 
 echo "Building Galaxy S B BigMem RAM version"
 
-./sbuildjb.sh galaxysb s
-
-echo "Building Galaxy S B MIUI BigMem RAM version"
-
-./sbuildjb.sh galaxysbm s  
-
-make clean
-
-echo "JB Work Finished"
-
-echo "GearKernel JBPlus Batch Build..."
-
-make clean
-
-echo "Building Galaxy S Stock RAM version"
-
-./sbuildjbplus.sh galaxys 
-
-echo "Building Galaxy S BigMem RAM version"
-
-./sbuildjbplus.sh galaxys s 
-
-make clean
-
-echo "Building Vibrant Stock RAM version"
-
-./sbuildjbplus.sh vibrant
-
-echo "Building Vibrant BigMem RAM version"
-
-./sbuildjbplus.sh vibrant s
-
-make clean 
-
-echo "Building Captivate Stock RAM version"
-
-./sbuildjbplus.sh captivate
-
-echo "Building Captivate BigMem RAM version"
-
-./sbuildjbplus.sh captivate s
-
-make clean
-
-echo "Building Galaxy S B Stock RAM version"
-
-./sbuildjbplus.sh galaxysb 
-
-echo "Building Galaxy S B BigMem RAM version"
-
-./sbuildjbplus.sh galaxysb s 
-
-make clean
-
-echo "JBPlus Work Finished"
-
-echo "GearKernel JB3 Batch Build..."
-
-make clean
-
-echo "Building Galaxy S Stock RAM version"
-
-./sbuildjb3.sh galaxys 
-
-echo "Building Galaxy S BigMem RAM version"
-
-./sbuildjb3.sh galaxys s 
-
-make clean
-
-echo "Building Vibrant Stock RAM version"
-
-./sbuildjb3.sh vibrant
-
-echo "Building Vibrant BigMem RAM version"
-
-./sbuildjb3.sh vibrant s
-
-make clean 
-
-echo "Building Captivate Stock RAM version"
-
-./sbuildjb3.sh captivate
-
-echo "Building Captivate BigMem RAM version"
-
-./sbuildjb3.sh captivate s
-
-make clean
-
-echo "Building Galaxy S B Stock RAM version"
-
-./sbuildjb3.sh galaxysb 
-
-echo "Building Galaxy S B BigMem RAM version"
-
-./sbuildjb3.sh galaxysb s 
+./sbuildgear.sh galaxysb s
 
 make clean
 
