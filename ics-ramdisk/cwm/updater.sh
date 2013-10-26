@@ -13,3 +13,5 @@ busybox mkdir -p /system/GearKernel/efs
 busybox cp -Rf /efs/* /system/GearKernel/efs/
 busybox umount /efs
 busybox umount /system
+busybox mount cache
+busybox rm -rf /cache/*
