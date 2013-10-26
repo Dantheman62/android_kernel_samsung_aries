@@ -1,0 +1,115 @@
+How to build (modified by Alberto96, credits to stratosk)
+-----------------------------------------------------------------------------
+
+Prerequisites
+-------------
+Basic knowledge of Linux and compiling is required to be able to build a kernel. 
+You need a modern Linux box (preferably) with git and latest linaro toolchain optimized for Cortex-A8 installed (install this in gearkernel/toolchain folder)
+(http://forum.xda-developers.com/showthread.php?t=2098133).
+
+First you need to setup the directory that within you will clone the kernel and 
+initramfs repository. In this guide we will setup them in ~/gearkernel but you 
+can do it in any directory you want.
+
+
+1. Setup build environment
+
+In your home directory (~/) create the directories:
+
+mkdir -p gearkernel/output/galaxys
+mkdir -p gearkernel/output/captivate
+mkdir -p gearkernel/output/vibrant
+mkdir -p gearkernel/output/galaxysb
+
+The above will be the output directories for Galaxy S, Galaxy S B (Brazil), Captivate and Vibrant versions.
+
+The directory structure is complete. Now, you are ready to clone GearKernel code.
+
+2. Setting up repositories
+
+While you are still in ~/gearkernel directory do the following.
+
+Clone the main kernel repository branch jb-4.2.1 (Universal):
+
+git clone -b jb-4.2.1 git://github.com/Alberto96/samsung-kernel-aries
+
+Due to the fact that github does not preserve file permissions, I also included
+initramfs for each SGS variant as a tarball. You need to do the following 
+only the first time you clone the ics-ramdisk repo. Of course, you can safely
+do this every time you fetch new code.
+
+Captivate, Galaxy S B and Galaxy S shares the same ramdisk. (except recovery)
+
+Extract all Recoveries:
+
+tar zxvf ics_rec_init.tar.gz
+tar zxvf ics_rec_init_v.tar.gz
+tar zxvf ics_rec_init_c.tar.gz
+tar zxvf ics_rec_init_b.tar.gz
+
+To build an Universal Kernel do this:
+
+cd samsung-kernel-aries/ics-ramdisk
+tar zxvf gear_combo.tar.gz 
+tar zxvf gear_combo_v.tar.gz
+
+3. Kernel configuration
+
+You need to set the correct toolchain path:
+
+1) Open with gedit (or with your favourite editor) sbuildgear.sh located in samsung-kernel-aries folder and search this string : export CROSS_COMPILE=
+2) Edit the path after the = and change it with your toolchain/bin path
+
+Example :
+
+export CROSS_COMPILE=/gearkernel/toolchain/bin/arm-gnueabi-
+
+to
+
+export CROSS_COMPILE=new path toolchain/bin
+
+I use 4 files to keep kernel's configuration for each variant.
+The files are placed in arch/arm/configs directory and they are named:
+
+GearKernelUni_galaxys_defconfig
+GearKernelUni_galaxysb_defconfig
+GearKernelUni_captivate_defconfig
+GearKernelUni_vibrant_defconfig
+
+When, you will run the build script, the proper configuration will be used
+according to the selected variant (please see next section).
+If you need any change kernel configuration, you have to edit these files
+before the building procedure. 
+Leave these files unchanged, if you want gearkernel's default settings.
+
+You are ready to build!
+
+
+4. Building the kernel
+
+I create a script that automates the building procedure. The script can accept
+2 arguments: 
+a) Kernel variant: galaxys, captivate, vibrant, galaxysb 
+b) s argument to build the kernel for hugemem compatible ROMs
+
+If you run the script without arguments will build the normal version 
+for galaxys.
+
+Do this for galaxys kernel compile:
+
+cd ~/gearkernel/samsung-kernel-aries
+./sbuilduni galaxys
+
+and for 's' version:
+./sbuilduni galaxys s
+
+Wait few minutes (time depends on the machine - on my build machine 4-5 minutes) and hopefully 
+the compilation will end.
+Watch the output for possible errors. A successful compilation must NOT have any
+error. It may have some warnings, but you can safely ignore them. 
+If everything was OK, you must have the zImage file in 
+~/gearkernel/samsung-kernel-aries/arch/arm/boot directory.
+Also the script will automatically prepare the CWM flashable zip and the 
+ODIN/Heimdall flashable in ~/gearkernel/output directory (in respective variant)
+
+Now, you are ready to flash the kernel!
