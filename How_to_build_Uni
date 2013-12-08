@@ -29,7 +29,7 @@ The directory structure is complete. Now, you are ready to clone GearKernel code
 
 While you are still in ~/gearkernel directory do the following.
 
-Clone the main kernel repository branch jb-4.2.1 (Universal):
+Clone the main kernel repository branch 'universal':
 
 git clone -b universal git://github.com/Alberto96/samsung-kernel-aries
 
